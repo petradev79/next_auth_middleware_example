@@ -21,9 +21,19 @@ body {
 }
 
 .container {
-  height: 100vh;
+  height: 50vh;
   display: grid;
   place-content: center;
+}
+
+.header {
+  width: 100%;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 a {
