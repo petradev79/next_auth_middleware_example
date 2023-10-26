@@ -6,19 +6,19 @@ export default withAuth(
   // `withAuth` augments your `Request` with the user's token.
   function middleware(request) {
     // console.log(request.nextUrl.pathname);
-    // console.log(request.nextauth.token);
+    console.log('middleware token', request.nextauth.token);
 
     if (
       request.nextUrl.pathname.startsWith('/dashboard') &&
-      request.nextauth.token?.role !== 'admin'
+      request.nextauth.token?.user._doc.role !== 'admin'
     ) {
       return NextResponse.rewrite(new URL('/denied', request.url));
     }
 
     if (
       request.nextUrl.pathname.startsWith('/contact') &&
-      request.nextauth.token?.role !== 'admin' &&
-      request.nextauth.token?.role !== 'manager'
+      request.nextauth.token?.user._doc.role !== 'admin' &&
+      request.nextauth.token?.user._doc.role !== 'manager'
     ) {
       return NextResponse.rewrite(new URL('/denied', request.url));
     }
@@ -30,4 +30,4 @@ export default withAuth(
   }
 );
 
-export const config = { matcher: ['/dashboard'] };
+// export const config = { matcher: ['/dashboard'] };

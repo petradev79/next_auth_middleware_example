@@ -28,8 +28,9 @@ export const authOptions = {
       // },
       async authorize(credentials) {
         //Check if the user exists.
-
         await connect();
+
+        if (!credentials) return;
 
         const user = await User.findOne({
           email: credentials.email,
@@ -40,26 +41,42 @@ export const authOptions = {
           user.password
         );
 
-        if (credentials?.username === user.username && isPasswordCorrect) {
-          // console.log('user from route', user);
-          return user;
-        } else {
+        // if (credentials?.username === user.username && isPasswordCorrect) {
+        //   // console.log('user from route', user);
+        //   return user;
+        // } else {
+        //   console.log('Wrong Credentials!');
+        //   return null;
+        // }
+
+        if (!isPasswordCorrect) {
           console.log('Wrong Credentials!');
-          return null;
         }
+
+        return user;
       },
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) token.role = user.role;
+    async jwt({ user, token }) {
+      if (user) {
+        // Note that this if condition is needed
+        token.user = { ...user };
+      }
+      console.log('route token from jwt', token);
       return token;
     },
     // If you want to use the role in client components
     async session({ session, token }) {
-      if (session?.user) session.user.role = token.role;
+      if (session?.user) session.user = token.user;
+      console.log('route session from session', token);
+
       return session;
     },
+  },
+  secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
   },
 };
 
