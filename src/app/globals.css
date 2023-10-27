@@ -21,7 +21,7 @@ body {
 }
 
 .container {
-  height: 50vh;
+  min-height: 50vh;
   display: grid;
   place-content: center;
 }
@@ -40,6 +40,43 @@ body {
   display: flex;
   align-items: center;
   gap: 3rem;
+}
+
+/* REGISTRATION FORM */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-form form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.signup-form input, .signup-form select {
+  padding: 20px;
+  background-color: transparent;
+  border: 2px solid #bbb;
+  color: #bbb;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.signup-form button {
+  width: 300px;
+  padding: 20px;
+  cursor: pointer;
+  background-color: #53c28b;
+  border: none;
+  border-radius: 5px;
+  color: #eee;
+  font-weight: bold;
 }
 
 a {

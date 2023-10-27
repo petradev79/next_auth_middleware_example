@@ -16,6 +16,7 @@ const Header = () => {
           <Link href='/contact'>Contact</Link>
         )}
         {role && role === 'admin' && <Link href='/dashboard'>Dashboard</Link>}
+        <Link href='/register'>Register</Link>
       </div>
       <button onClick={() => signOut()}>Sign out</button>
     </div>
