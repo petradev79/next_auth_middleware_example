@@ -21,6 +21,8 @@ body {
 }
 
 .container {
+  margin: 50px auto 0;
+  max-width: 400px;
   min-height: 50vh;
   display: grid;
   place-content: center;
@@ -42,8 +44,17 @@ body {
   gap: 3rem;
 }
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* align-items: center;
+  justify-content: center; */
+}
+
 /* REGISTRATION FORM */
 .signup-form {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -58,14 +69,24 @@ body {
   gap: 20px;
 }
 
-.signup-form input, .signup-form select {
-  padding: 20px;
+.signup-form input,
+.signup-form select,
+.signup-form fieldset {
+  padding: 10px;
   background-color: transparent;
   border: 2px solid #bbb;
-  color: #bbb;
+  color: #2e2e2e;
   border-radius: 5px;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 16px;
+}
+
+.signup-form fieldset input {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.signup-form input::placeholder {
+  color: inherit;
 }
 
 .signup-form button {

@@ -22,6 +22,9 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    rules: {
+      type: [String],
+    },
   },
   { timestamps: true }
 );

@@ -6,11 +6,24 @@ const About = () => {
   const { data: session } = useSession();
   console.log('session from about: ', session);
   return (
-    <div>
-      <h1>About Page Client</h1>
-      <p>{session?.user?._doc.username}</p>
-      <p>{session?.user?._doc.email}</p>
-      <p>{session?.user?._doc.role}</p>
+    <div className='flex-column'>
+      <h1>About Page is Client side</h1>
+      <p>User with any role have access to view this page</p>
+
+      {session && (
+        <div>
+          <h2>{session?.user._doc.username}</h2>
+          <p>Email: {session?.user._doc.role}</p>
+          <p>Role: {session?.user._doc.role}</p>
+          <p>
+            Rules:{' '}
+            {session?.user._doc.rules &&
+              session?.user._doc.rules.map(rule => {
+                return <span key={rule}>{rule} </span>;
+              })}
+          </p>
+        </div>
+      )}
     </div>
   );
 };
