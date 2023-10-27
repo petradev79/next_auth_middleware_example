@@ -4,7 +4,6 @@ import { useSession } from 'next-auth/react';
 
 const About = () => {
   const { data: session } = useSession();
-  console.log('session from about: ', session);
   return (
     <div className='flex-column'>
       <h1>About Page is Client side</h1>
@@ -13,7 +12,7 @@ const About = () => {
       {session && (
         <div>
           <h2>{session?.user._doc.username}</h2>
-          <p>Email: {session?.user._doc.role}</p>
+          <p>Email: {session?.user._doc.email}</p>
           <p>Role: {session?.user._doc.role}</p>
           <p>
             Rules:{' '}

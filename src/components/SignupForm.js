@@ -1,12 +1,9 @@
 'use client';
+
 import { useState } from 'react';
-// import Link from 'next/link';
-// import { useRouter } from 'next/navigation';
 
 const SignupForm = () => {
   const [error, setError] = useState(null);
-
-  // const router = useRouter();
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -35,7 +32,6 @@ const SignupForm = () => {
         }),
       });
       res.status === 201 && console.log('Account has been created');
-      // router.push('/dashboard/login?success=Account has been created');
     } catch (err) {
       setError(err);
       console.log(err);
@@ -84,10 +80,6 @@ const SignupForm = () => {
         <button>Register</button>
         {error && 'Something went wrong!'}
       </form>
-      {/* <span className={styles.or}>- OR -</span>
-      <Link className={styles.link} href='/login'>
-        Login with an existing account
-      </Link> */}
     </div>
   );
 };

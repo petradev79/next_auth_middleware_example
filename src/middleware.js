@@ -1,13 +1,8 @@
-// export { default } from "next-auth/middleware"
 import { withAuth } from 'next-auth/middleware';
 import { NextResponse } from 'next/server';
 
 export default withAuth(
-  // `withAuth` augments your `Request` with the user's token.
   function middleware(request) {
-    // console.log(request.nextUrl.pathname);
-    console.log('middleware token', request.nextauth.token);
-
     if (
       request.nextUrl.pathname.startsWith('/dashboard') &&
       request.nextauth.token?.user._doc.role !== 'admin'
@@ -29,5 +24,3 @@ export default withAuth(
     },
   }
 );
-
-// export const config = { matcher: ['/dashboard'] };

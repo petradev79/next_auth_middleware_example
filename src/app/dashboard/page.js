@@ -12,7 +12,7 @@ const Dashboard = async () => {
       {session && (
         <div>
           <h2>{session?.user._doc.username}</h2>
-          <p>Email: {session?.user._doc.role}</p>
+          <p>Email: {session?.user._doc.email}</p>
           <p>Role: {session?.user._doc.role}</p>
           <p>
             Rules:{' '}

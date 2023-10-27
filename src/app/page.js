@@ -3,7 +3,6 @@ import { authOptions } from './api/auth/[...nextauth]/route';
 
 const Home = async () => {
   const session = await getServerSession(authOptions);
-  console.log('session from home: ', session.user);
 
   return (
     <div className='flex-column'>
@@ -13,7 +12,7 @@ const Home = async () => {
       {session && (
         <div>
           <h2>{session?.user._doc.username}</h2>
-          <p>Email: {session?.user._doc.role}</p>
+          <p>Email: {session?.user._doc.email}</p>
           <p>Role: {session?.user._doc.role}</p>
           <p>
             Rules:{' '}

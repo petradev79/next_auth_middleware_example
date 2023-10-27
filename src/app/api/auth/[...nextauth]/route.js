@@ -18,16 +18,7 @@ export const authOptions = {
         email: { label: 'Email', type: 'email', placeholder: 'Email' },
         password: { label: 'Password', type: 'password' },
       },
-      // profile(profile) {
-      //   console.log('profile', profile);
-      //   return {
-      //     ...profile,
-      //     role: profile.role ?? 'user',
-      //     id: profile.id.toString(),
-      //   };
-      // },
       async authorize(credentials) {
-        //Check if the user exists.
         await connect();
 
         if (!credentials) return;
@@ -41,15 +32,7 @@ export const authOptions = {
           user.password
         );
 
-        // if (credentials?.username === user.username && isPasswordCorrect) {
-        //   // console.log('user from route', user);
-        //   return user;
-        // } else {
-        //   console.log('Wrong Credentials!');
-        //   return null;
-        // }
-
-        if (!isPasswordCorrect) {
+        if (credentials?.username !== user.username || !isPasswordCorrect) {
           console.log('Wrong Credentials!');
         }
 
@@ -60,13 +43,11 @@ export const authOptions = {
   callbacks: {
     async jwt({ user, token }) {
       if (user) {
-        // Note that this if condition is needed
         token.user = { ...user };
       }
       console.log('route token from jwt', token);
       return token;
     },
-    // If you want to use the role in client components
     async session({ session, token }) {
       if (session?.user) session.user = token.user;
       console.log('route session from session', token);
