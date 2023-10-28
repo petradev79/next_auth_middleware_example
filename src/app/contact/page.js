@@ -1,28 +1,36 @@
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '../api/auth/[...nextauth]/route';
+import ChakraContainer from '@/components/ChakraContainer';
+import ChakraHeading from '@/components/ChakraHeading';
+import ChakraCardBasic from '@/components/ChakraCardBasic';
 
 const Contact = async () => {
   const session = await getServerSession(authOptions);
+
+  const rules = session?.user._doc.rules;
+
+  const formatRules = rules.map((rule, i) =>
+    i === rules.length - 1 ? rule : `${rule}, `
+  );
+
   return (
-    <div className='flex-column'>
-      <h1>Contact Page</h1>
-      <p>If your role is admin or manager you have access to view this page</p>
+    <ChakraContainer>
+      <ChakraHeading
+        heading='Contact Page'
+        text='If your role is admin or manager you have access to view this page'
+      />
 
       {session && (
         <div>
-          <h2>{session?.user._doc.username}</h2>
-          <p>Email: {session?.user._doc.email}</p>
-          <p>Role: {session?.user._doc.role}</p>
-          <p>
-            Rules:{' '}
-            {session?.user._doc.rules &&
-              session?.user._doc.rules.map(rule => {
-                return <span key={rule}>{rule} </span>;
-              })}
-          </p>
+          <ChakraCardBasic
+            heading={session?.user._doc.username}
+            text={session?.user._doc.email}
+            role={session?.user._doc.role}
+            rules={formatRules}
+          />
         </div>
       )}
-    </div>
+    </ChakraContainer>
   );
 };
 export default Contact;
