@@ -1,7 +1,6 @@
-import SignupForm from '@/components/SignupForm';
 import ChakraContainer from '@/components/ChakraContainer';
 import ChakraHeading from '@/components/ChakraHeading';
-import ChakraNavLink from '@/components/ChakraNavLink';
+import ChakraSignupForm from '@/components/ChakraSignupForm';
 
 const Register = () => {
   return (
@@ -12,8 +11,8 @@ const Register = () => {
           text='Only If your role is admin you have access to view this page and add new
           users'
         />
+        <ChakraSignupForm />
       </ChakraContainer>
-      <SignupForm />
     </>
   );
 };

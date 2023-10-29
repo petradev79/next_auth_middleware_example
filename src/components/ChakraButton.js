@@ -3,6 +3,7 @@
 import { Button } from '@chakra-ui/react';
 
 const ChakraButton = ({
+  type = 'button',
   onClick,
   text,
   colorScheme = 'brand',
@@ -15,6 +16,7 @@ const ChakraButton = ({
 }) => {
   return (
     <Button
+      type={type}
       onClick={onClick}
       borderRadius={0}
       colorScheme={colorScheme}

@@ -20,8 +20,8 @@ body {
     rgb(var(--background-start-rgb));
 }
 /* REGISTRATION FORM */
-.signup-form {
-  /* margin-top: 50px; */
+/* .signup-form {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -65,12 +65,12 @@ body {
   border-radius: 5px;
   color: #eee;
   font-weight: bold;
-}
+} */
 
-a {
+/* a {
   color: inherit;
   text-decoration: none;
-}
+} */
 
 @media (prefers-color-scheme: dark) {
   html {
