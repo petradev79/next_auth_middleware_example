@@ -4,7 +4,7 @@ import ChakraContainer from '@/components/ChakraContainer';
 import ChakraHeading from '@/components/ChakraHeading';
 import ChakraCardBasic from '@/components/ChakraCardBasic';
 
-const Home = async () => {
+const Home = async () => {// DEPLOY APP TO NETLIFY
   const session = await getServerSession(authOptions);
   const rules = session?.user._doc.rules;
 
