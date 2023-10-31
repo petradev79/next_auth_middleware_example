@@ -11,6 +11,13 @@ export default withAuth(
     }
 
     if (
+      request.nextUrl.pathname.startsWith('/register') &&
+      request.nextauth.token?.user._doc.role !== 'admin'
+    ) {
+      return NextResponse.rewrite(new URL('/denied', request.url));
+    }
+
+    if (
       request.nextUrl.pathname.startsWith('/contact') &&
       request.nextauth.token?.user._doc.role !== 'admin' &&
       request.nextauth.token?.user._doc.role !== 'manager'

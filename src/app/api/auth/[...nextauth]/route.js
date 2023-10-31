@@ -34,6 +34,8 @@ export const authOptions = {
 
         if (credentials?.username !== user.username || !isPasswordCorrect) {
           console.log('Wrong Credentials!');
+          // throw new Error('Wrong Credentials!');
+          return;
         }
 
         return user;

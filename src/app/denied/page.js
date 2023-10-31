@@ -1,15 +1,17 @@
-import Link from 'next/link';
+import ChakraContainer from '@/components/ChakraContainer';
+import ChakraHeading from '@/components/ChakraHeading';
+import ChakraNavLink from '@/components/ChakraNavLink';
 
 const Denied = () => {
   return (
-    <section className='flex-column'>
-      <h1>Access Denied</h1>
-      <p>
-        You are logged in, but you do not have the required access level to view
-        this page.
-      </p>
-      <Link href='/'>Return to Home Page</Link>
-    </section>
+    <ChakraContainer>
+      <ChakraHeading
+        heading='Access Denied'
+        text='You are logged in, but you do not have the required access level to view
+        this page.'
+      />
+      <ChakraNavLink href='/' label='Return to Home Page' active={true} />
+    </ChakraContainer>
   );
 };
 export default Denied;
