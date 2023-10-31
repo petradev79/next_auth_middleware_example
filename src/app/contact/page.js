@@ -9,7 +9,7 @@ const Contact = async () => {
 
   const rules = session?.user._doc.rules;
 
-  const formatRules = rules.map((rule, i) =>
+  const formatRules = rules?.map((rule, i) =>
     i === rules.length - 1 ? rule : `${rule}, `
   );
 
@@ -26,7 +26,7 @@ const Contact = async () => {
             heading={session?.user._doc.username}
             text={session?.user._doc.email}
             role={session?.user._doc.role}
-            rules={formatRules}
+            rules={formatRules && formatRules}
           />
         </div>
       )}

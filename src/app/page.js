@@ -4,11 +4,11 @@ import ChakraContainer from '@/components/ChakraContainer';
 import ChakraHeading from '@/components/ChakraHeading';
 import ChakraCardBasic from '@/components/ChakraCardBasic';
 
-const Home = async () => {// DEPLOY APP TO NETLIFY
+const Home = async () => {
   const session = await getServerSession(authOptions);
   const rules = session?.user._doc.rules;
 
-  const formatRules = rules.map((rule, i) =>
+  const formatRules = rules?.map((rule, i) =>
     i === rules.length - 1 ? rule : `${rule}, `
   );
 
@@ -25,7 +25,7 @@ const Home = async () => {// DEPLOY APP TO NETLIFY
             heading={session?.user._doc.username}
             text={session?.user._doc.email}
             role={session?.user._doc.role}
-            rules={formatRules}
+            rules={formatRules && formatRules}
           />
         </div>
       )}
